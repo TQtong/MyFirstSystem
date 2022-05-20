@@ -11,7 +11,7 @@ using CreateSystem.View;
 
 namespace CreateSystem.ViewModel
 {
-    public class LoginViewModel:NotifyBase
+    public class LoginViewModel:BindObject
     {
 
 
@@ -32,7 +32,7 @@ namespace CreateSystem.ViewModel
             set
             {
                 _showProgress = value;
-                this.DoNotify();
+                this.OnPropertyChanged();
                 LoginCommand.RaiseCanExecuteChanged();
             }
         }

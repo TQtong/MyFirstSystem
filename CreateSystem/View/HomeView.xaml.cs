@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CreateSystem.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,12 @@ namespace CreateSystem.View
     /// <summary>
     /// IndexViewModel.xaml 的交互逻辑
     /// </summary>
-    public partial class IndexViewModel : UserControl
+    public partial class HomeView : UserControl
     {
-        public IndexViewModel()
+        public HomeView()
         {
             InitializeComponent();
+            this.DataContext = new HomeViewModel();
         }
     }
 }

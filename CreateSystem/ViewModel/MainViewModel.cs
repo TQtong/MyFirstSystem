@@ -10,7 +10,7 @@ using CreateSystem.Model;
 
 namespace CreateSystem.ViewModel
 {
-    public class MainViewModel : NotifyBase
+    public class MainViewModel : BindObject
     {
 
         public UserModel UserInfo { get; set; }
@@ -20,7 +20,7 @@ namespace CreateSystem.ViewModel
         public string  Search
         {
             get { return _search; }
-            set { _search = value; this.DoNotify(); }
+            set { _search = value; this.OnPropertyChanged(); }
         }
 
         private FrameworkElement _mainContent;
@@ -28,7 +28,7 @@ namespace CreateSystem.ViewModel
         public FrameworkElement MainContent
         {
             get { return _mainContent; }
-            set { _mainContent = value; this.DoNotify(); }
+            set { _mainContent = value; this.OnPropertyChanged(); }
         }
 
         public CommandBase NavChangeCommand { get; set; }
@@ -40,7 +40,7 @@ namespace CreateSystem.ViewModel
             NavChangeCommand.DoExecute = new Action<object>(DoChanged);
             NavChangeCommand.DoCanExecute = new Func<object, bool>((o) => true);
 
-            DoChanged("IndexViewModel");
+            DoChanged("HomeView");
         }
 
         public void DoChanged(object obj)

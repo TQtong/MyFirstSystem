@@ -7,7 +7,7 @@ using CreateSystem.Common;
 
 namespace CreateSystem.Model
 {
-    public class LoginModel:NotifyBase
+    public class LoginModel:BindObject
     {
         /// <summary>
         /// 用户名
@@ -20,7 +20,7 @@ namespace CreateSystem.Model
             set 
             { 
                 _userName = value;
-                this.DoNotify();
+                this.OnPropertyChanged();
             }
         }
 
@@ -35,7 +35,7 @@ namespace CreateSystem.Model
             set 
             { 
                 _password = value;
-                this.DoNotify();
+                this.OnPropertyChanged();
             }
         }
 
@@ -50,7 +50,7 @@ namespace CreateSystem.Model
             set
             {
                 _validationCode = value;
-                this.DoNotify();
+                this.OnPropertyChanged();
             }
         }
 
@@ -65,7 +65,7 @@ namespace CreateSystem.Model
             set
             { 
                 _errorMessage = value;
-                this.DoNotify();
+                this.OnPropertyChanged();
             }
         }
 

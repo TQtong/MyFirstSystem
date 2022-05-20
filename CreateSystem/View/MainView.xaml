@@ -196,9 +196,9 @@
 
                 <!--第一部分的第二个内容-->
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <RadioButton Content="怪兽Home" Style="{StaticResource NavButtonStyle}" IsChecked="True" Command="{Binding NavChangeCommand}" CommandParameter="IndexViewModel"/>
+                    <RadioButton Content="怪兽Home" Style="{StaticResource NavButtonStyle}" IsChecked="True" Command="{Binding NavChangeCommand}" CommandParameter="HomeView"/>
                     <RadioButton Content="怪兽Book" Style="{StaticResource NavButtonStyle}"/>
-                    <RadioButton Content="怪兽Center" Style="{StaticResource NavButtonStyle}"/>
+                    <RadioButton Content="怪兽Center" Style="{StaticResource NavButtonStyle}" Command="{Binding NavChangeCommand}" CommandParameter="CenterView"/>
                     <RadioButton Content="怪兽Battle" Style="{StaticResource NavButtonStyle}"/>
                     <RadioButton Content="怪兽Community" Style="{StaticResource NavButtonStyle}"/>
                 </StackPanel>

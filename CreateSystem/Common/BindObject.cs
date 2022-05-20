@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace CreateSystem.Common
 {
-    public class NotifyBase : INotifyPropertyChanged
+    public class BindObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void DoNotify([CallerMemberName]string propName="")
+        public void OnPropertyChanged([CallerMemberName]string propName="")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
