@@ -1,5 +1,4 @@
-﻿using CreateSystem.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CreateSystem.View
+namespace CustomControlLibrary
 {
     /// <summary>
-    /// CenterView.xaml 的交互逻辑
+    /// SKeletonScreen.xaml 的交互逻辑
     /// </summary>
-    public partial class CenterView : UserControl
+    public partial class SkeletonScreen : UserControl
     {
-        public CenterView()
+        public SkeletonScreen()
         {
             InitializeComponent();
-            this.DataContext = new CenterViewModel();
         }
     }
 }

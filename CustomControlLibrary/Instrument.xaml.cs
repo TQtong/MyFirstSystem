@@ -198,8 +198,6 @@ namespace CustomControlLibrary
 
                 drawCanvas.Children.Add(lineScale);
 
-                Console.WriteLine(ScaleTextSize);
-
                 TextBlock textScale = new TextBlock();
                 textScale.Width = 34;
                 textScale.TextAlignment = TextAlignment.Center;

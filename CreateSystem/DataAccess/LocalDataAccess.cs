@@ -131,6 +131,10 @@ namespace CreateSystem.DataAccess
             return null;
         }
 
+        /// <summary>
+        /// 获取首页列表模型
+        /// </summary>
+        /// <returns></returns>
         public List<MonsterSeriesModel> GetMonsterSeriesModels()
         {
             try
@@ -199,5 +203,108 @@ namespace CreateSystem.DataAccess
             }
             return null;
         }
+
+        /// <summary>
+        /// 获取名称
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetMonsterName()
+        {
+            try
+            {
+                List<string> list = new List<string>();
+
+                if (DBConnection())
+                {
+                    string sql = "SELECT real_name FROM [dbo].[create_system_users] WHERE is_teacher=1";
+
+                    adapter = new SqlDataAdapter(sql, conn);
+
+                    DataTable table = new DataTable();
+                    int count = adapter.Fill(table);
+                    if (count > 0)
+                    {
+                        list = table.AsEnumerable().Select(x => x.Field<string>("real_name")).ToList();
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                this.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 获取数据对象(列表)
+        /// </summary>
+        /// <returns></returns>
+        public List<MonsterModel> GetMonsterModel()
+        {
+            try
+            {
+                List<MonsterModel> result = new List<MonsterModel>();
+                if (this.DBConnection())
+                {
+                    string sql = @"SELECT a.course_id,a.course_name,a.description,c.real_name,a.course_url,a.course_cover FROM [dbo].[create_system_courses] a
+                        LEFT JOIN create_system_course_teacher_relation b
+                        on a.course_id=b.course_id
+                        LEFT JOIN create_system_users c
+                        on b.teacher_id=c.user_id
+                        ORDER BY a.course_id";
+                    adapter = new SqlDataAdapter(sql, conn);
+
+                    DataTable table = new DataTable();
+                    int count = adapter.Fill(table);
+                    if (count > 0)
+                    {
+                        string courseId = "";
+                        MonsterModel model = null;
+
+                        foreach (DataRow dr in table.AsEnumerable())
+                        {
+                            string tempId = dr.Field<string>("course_id");
+                            if (courseId != tempId)
+                            {
+                                courseId = tempId;
+
+                                model = new MonsterModel
+                                {
+                                    MonsterName = dr.Field<string>("course_name"),
+                                    MonsterPicture = dr.Field<string>("course_cover"),
+                                    MonsterUrl = dr.Field<string>("course_url"),
+                                    MonsterDescription = dr.Field<string>("description"),
+
+                                    MonsterManagers = new List<string>()
+                                };
+
+                                result.Add(model);
+                            }
+                            if (model != null)
+                            {
+                                model.MonsterManagers.Add(dr.Field<string>("real_name"));
+                            }
+                        }
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.Dispose();
+            }
+        }
+
     }
 }

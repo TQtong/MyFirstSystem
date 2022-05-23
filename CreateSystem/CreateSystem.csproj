@@ -62,10 +62,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\MonsterDataTemplateSelector.cs" />
     <Compile Include="Converter\BoolToArrowConverter.cs" />
     <Compile Include="Converter\BoolToColorConverter.cs" />
+    <Compile Include="Model\MonsterCategoryItemModel.cs" />
+    <Compile Include="Model\MonsterModel.cs" />
     <Compile Include="Model\MonsterSeriesDataModel.cs" />
     <Compile Include="Model\MonsterSeriesModel.cs" />
+    <Compile Include="ViewModel\CenterViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -153,8 +157,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\1.jpg" />
-    <Resource Include="Assets\Images\2.jpg" />
+    <Resource Include="Assets\Images\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj">

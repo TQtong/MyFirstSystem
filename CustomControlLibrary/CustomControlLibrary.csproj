@@ -48,7 +48,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SkeletonScreen.xaml.cs">
+      <DependentUpon>SkeletonScreen.xaml</DependentUpon>
+    </Compile>
     <Page Include="Instrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SkeletonScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
