@@ -15,6 +15,16 @@ namespace CreateSystem.Common
         public event EventHandler CanExecuteChanged;
 
         /// <summary>
+        /// 定义执行体的委托
+        /// </summary>
+        public Action<object> DoExecute { get; set; }
+
+        /// <summary>
+        /// 定义执行判断的委托
+        /// </summary>
+        public Func<object, bool> DoCanExecute { get; set; }
+
+        /// <summary>
         /// 是否可执行的判断
         /// </summary>
         /// <param name="parameter"></param>
@@ -32,16 +42,6 @@ namespace CreateSystem.Common
         {
              DoExecute?.Invoke(parameter);
         }
-
-        /// <summary>
-        /// 定义执行体的委托
-        /// </summary>
-        public Action<object> DoExecute { get; set; }
-
-        /// <summary>
-        /// 定义执行判断的委托
-        /// </summary>
-        public Func<object,bool> DoCanExecute { get; set; }
 
         /// <summary>
         /// 获取改变事件
